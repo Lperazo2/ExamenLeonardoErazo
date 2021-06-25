@@ -2,34 +2,26 @@ package dominio;
 
 
 public class Programa {
+    private double ejex, ejey;
 
-    private double x ,y;
-    
-  
-    public Programa (double x, double y){
-        this.x=x;
-        this.y=y;
+    public Programa(double ejex, double ejey) {
+        this.ejex = ejex;
+        this.ejey = ejey;
     }
-
-    public void setX(double x) {
-        this.x = x;
+    public double getEjex() {
+        return ejex;
     }
-
-    public void setY(double y) {
-        this.y = y;
+    public void setEjex(double ejex) {
+        this.ejex = ejex;
     }
-
-    public double getX() {
-        return x;
+    public double getEjey() {
+        return ejey;
     }
-
-    public double getY() {
-        return y;
+    public void setEjey(double ejey) {
+        this.ejey = ejey;
     }
-
-    
     @Override
     public String toString(){
-        return this.x+"  "+this.y;
+    return this.ejex+"  "+this.ejey;
     }
 }

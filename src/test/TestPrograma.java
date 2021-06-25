@@ -1,106 +1,76 @@
 package test;
 
 import dominio.Programa;
-import java.util.Scanner;
 import static java.lang.Math.sqrt;
-import java.util.InputMismatchException;
-
+import java.util.Scanner;
+ 
 public class TestPrograma {
 
     static Scanner datos = new Scanner(System.in);
 
     public static void main(String[] args) {
-        Programa[] coordenadas = new Programa[0];
-        System.out.println("MOVIMIENTOS DE UN PUNTO EN EL PLANO\n");
+        Programa[] coordenadas = new Programa[1];
+        movimientoPunto(coordenadas);
+    }
+    
 
-        System.out.println("INGRESE EL NUMERO DE MOVIMIENTOS");
+    public static void movimientoPunto(Programa est[]) {
+        double ejenx=0,ejeny=0, valorx=0, valory=0;
+        System.out.println("----  EL PLANO CARTECIANO ---- ");
+        System.out.println("TENEMOS UN PLANO (X;Y), "
+                + "USTED PUEDE MOVERSE LAS UNIDADES QUE DESEE PERO EL PROGRAMA DECIDE LA DIRECCION ");
+        System.out.println("INGRESE EL NUMERO DE MOVIMIENTOS QUE DESEEA REALIZAR");
         int n = datos.nextInt();
-        double suma;
-        for (int i = 0; i < n; i++) {
-
+        est[0]=new Programa (valorx,valory);
+        for (int i = 0; i < n; i++){
             int valorDado = (int) Math.floor(Math.random() * 3);
-
             if (valorDado == 0) {
-                System.out.println("EL PROGRAMA DECIDIO MOVERSE A LA IZQUIERDA DEL PLANO");
-                izquierda(coordenadas);
-                
+                datos.nextLine();
+                System.out.println("\n\n\n MOVIMIVIEMTO N°"+(i+1)+"\nEL PROGRAMA DECIDIO MOVERSE A LA IZQUIERDA (EJE X NEGATIVO) DEL PLANO");
+                System.out.println("INDIQUE CUANTO DESEA MOVERSE");
+                valorx = datos.nextDouble();
+                ejenx=ejenx-valorx;
+                est[0]= new Programa (ejenx,ejeny);
+                System.out.println("\nEL PUNTO AHORA SE ENCUENTRA EN LA POSICION :");
+                System.out.println("(X;Y) = ( " + est[0]+" )");
+                System.out.println("EL PUNTO SE ENCUENTRA A "+sqrt((est[0].getEjex()*est[0].getEjex())+(est[0].getEjey()*est[0].getEjey()))+" UNIDADES RESPECTO AL ORIGEN");
+                System.out.println("-------------------------------------- ");
             }
             if (valorDado == 1) {
 
-                System.out.println("EL PROGRAMA DECIDIO MOVERSE A LA DERECHA DEL PLANO");
-                derecha(coordenadas);
-
+                System.out.println("\n\n\n MOVIMIVIEMTO N°"+(i+1)+"\nEL PROGRAMA DECIDIO MOVERSE A LA DERECHA (EJE X POSITIVO) DEL PLANO");
+                System.out.println("INDIQUE CUANTO DESEA MOVERSE");
+                valorx = datos.nextDouble();
+                ejenx=ejenx+valorx;
+                est[0]= new Programa (ejenx,ejeny);
+                System.out.println("\nEL PUNTO AHORA SE ENCUENTRA EN LA POSICION :");
+                System.out.println("(X;Y) = ( " + est[0]+" )");
+                System.out.println("EL PUNTO SE ENCUENTRA A "+sqrt((est[0].getEjex()*est[0].getEjex())+(est[0].getEjey()*est[0].getEjey()))+" UNIDADES RESPECTO AL ORIGEN");
+                System.out.println("-------------------------------------- ");
             }
             if (valorDado == 2) {
-                System.out.println("EL PROGRAMA DECIDIO MOVERSE A LA ARRIBA DEL PLANO");
-                arriba(coordenadas);
-
+                System.out.println("\n\n\n MOVIMIVIEMTO N°"+(i+1)+"\nEL PROGRAMA DECIDIO MOVERSE A LA ARRIBA (EJE Y POSITIVO) DEL PLANO");
+                System.out.println("INDIQUE CUANTO DESEA MOVERSE");
+                valory = datos.nextDouble();
+                ejeny=ejeny+valory;
+                est[0]= new Programa (ejenx,ejeny);
+                System.out.println("\nEL PUNTO AHORA SE ENCUENTRA EN LA POSICION :");
+                System.out.println("(X;Y) = ( " + est[0]+" )");
+                System.out.println("EL PUNTO SE ENCUENTRA A "+sqrt((est[0].getEjex()*est[0].getEjex())+(est[0].getEjey()*est[0].getEjey()))+" UNIDADES RESPECTO AL ORIGEN");
+                System.out.println("-------------------------------------- ");
             }
             if (valorDado == 3) {
-                System.out.println("EL PROGRAMA DECIDIO MOVERSE A LA ABAJO DEL PLANO");
-                abajo(coordenadas);
+                System.out.println("\n\n\n MOVIMIVIEMTO N°"+(i+1)+"\nEL PROGRAMA DECIDIO MOVERSE A LA ABAJO (EJE Y NEGATIVO) DEL PLANO");
+                System.out.println("INDIQUE CUANTO DESEA MOVERSE");
+                valory = datos.nextDouble();
+                ejeny=ejeny-valory;
+                est[0]= new Programa (ejenx,ejeny);
+               System.out.println("\nEL PUNTO AHORA SE ENCUENTRA EN LA POSICION :");
+                System.out.println("(X;Y) = ( " + est[0]+" )");
+                System.out.println("EL PUNTO SE ENCUENTRA A "+sqrt((est[0].getEjex()*est[0].getEjex())+(est[0].getEjey()*est[0].getEjey()))+" UNIDADES RESPECTO AL ORIGEN");
+                System.out.println("-------------------------------------- ");
             }
 
         }
     }
- 
-    
-    public static void izquierda(Programa coord[]) {
-        double x, y, suma=0;
-        
-        System.out.println("INGRESE EL DE PASOS QUE QUIERE DESPLAZARCE"+coord[0]);
-        double numero = datos.nextDouble();
-        suma=suma-numero;
-//        x= coord[0].getX();
-//        y= coord[0].getY();
-//        coord[0] = new Programa((x-numero),(y));
-        System.out.println("EL PUNTO AHORA SE ENCUENTRA EN");
-//        System.out.println(coord[0]);
-    }
-
-    public static void derecha(Programa coord[]) {
-        double x, y;
-
-        System.out.println("INGRESE EL DE PASOS QUE QUIERE DESPLAZARCE");
-        double numero = datos.nextDouble();
-//        x= coord[0].getX();
-//        y=coord[0].getY();
-//        coord[0] = new Programa((x+numero),(y)); 
-       System.out.println("EL PUNTO AHORA SE ENCUENTRA EN");
-//        System.out.println(coord[0]);
-    }
-
-    public static void arriba(Programa coord[]) {
-        double x, y;
-
-        System.out.println("INGRESE EL DE PASOS QUE QUIERE DESPLAZARCE");
-        double numero = datos.nextDouble();
-//        x= coord[0].getX();
-//        y=coord[0].getY();
-//        coord[0] = new Programa(x,(y+numero)); 
-        System.out.println("EL PUNTO AHORA SE ENCUENTRA EN");
-//        System.out.println(coord[0]);
-    }
-
-    public static void abajo(Programa coord[]) {
-        double x, y;
-        System.out.println("INGRESE EL DE PASOS QUE QUIERE DESPLAZARCE");
-        double numero = datos.nextDouble();
-//        x= coord[0].getX();
-//        y=coord[0].getY();
-//        coord[0] = new Programa((x),(y-numero));  
-        System.out.println("EL PUNTO AHORA SE ENCUENTRA EN");
-        System.out.println(coord[0]);
-    }
-
-    public static void distancia(Programa coord[]) {
-        double x, y, distancia=0;
-        System.out.println("LA DISTANCIA TOTAL QUE SE DESPLAZO EL PUNTO DESDE EL ORIGEN ES");
-//        x=coord[0].getX();
-//        y=coord[0].getY();
-//        distancia=sqrt((x*x)+(y*y));
-        System.out.println("EL PUNTO SE DESPLAZO UNA DISTANCIA DE"+distancia);
-//   
-    }
-
 }
